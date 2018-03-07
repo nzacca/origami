@@ -13,7 +13,8 @@ export class EmitChangesDirective implements OnInit {
     const klass = getCustomElementClass(this.elementRef);
     if (klass) {
       const properties: {[name: string]: any} = {};
-      this.copyKeysFrom((<any>klass).__classProperties, properties);
+      const classProperties = (<any>klass).__classProperties || (<any>klass)._properties;
+      this.copyKeysFrom(classProperties, properties);
 
       // Listen for notify properties and Object/Array properties which may issue path changes
       const changeable = Object.keys(properties).filter(propertyName => {
