@@ -1,3 +1,3 @@
 export interface OnPolymerChange {
-  onPolymerChange(property?: string, event?: CustomEvent, detail?: any): void;
+  onPolymerChange(property?: PropertyKey, event?: CustomEvent, detail?: any): void;
 }

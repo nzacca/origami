@@ -4,13 +4,13 @@ export interface DescriptorHooks<T> {
   afterSet?(changed: boolean, value: T, original: T): void;
 }
 
-export function wrapAndDefineDescriptor<T>(target: any, propertyKey: string,
+export function wrapAndDefineDescriptor<T>(target: any, propertyKey: PropertyKey,
     hooks: DescriptorHooks<T>) {
   const desc = wrapDescriptor(target, propertyKey, hooks);
   Object.defineProperty(target, propertyKey, desc);
 }
 
-export function wrapDescriptor<T>(target: any, propertyKey: string,
+export function wrapDescriptor<T>(target: any, propertyKey: PropertyKey,
     hooks: DescriptorHooks<T>): PropertyDescriptor {
   let desc = Object.getOwnPropertyDescriptor(target, propertyKey);
   if (!desc) {

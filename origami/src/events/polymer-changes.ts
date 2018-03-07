@@ -2,7 +2,7 @@ import { wrapDescriptor } from '../util/descriptors';
 import { OnPolymerChange } from './on-polymer-change';
 
 export function PolymerChanges(): PropertyDecorator {
-  return (target: any, propertyKey: string) => {
+  return (target: any, propertyKey: PropertyKey) => {
     const desc = Object.getOwnPropertyDescriptor(target, propertyKey);
     /* istanbul ignore if */
     if (desc && desc.get && !desc.set) {
